@@ -1,7 +1,7 @@
 name: Yor Action Testing
-on: push
-on: 
-  workflow_dispatch:
+on: [push, workflow_dispatchs]
+
+
 jobs:
   yor-job:
     runs-on: ubuntu-latest
