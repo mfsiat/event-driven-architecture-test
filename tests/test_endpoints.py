@@ -1,11 +1,12 @@
 from app.main import app
 from fastapi.testclient import TestClient
 
-client =  TestClient(app)
+client = TestClient(app)
+
 
 def test_create_thumbnail():
     source_url = "https://jpeg.org/images/jpeg-home.jpg"
-    response = client.post('/thumbnail', json={"url": source_url})
+    response = client.post("/thumbnail", json={"url": source_url})
     assert response.status_code == 200
     assert response.json() != None
 
@@ -16,11 +17,12 @@ def test_create_thumbnail():
     response = client.get(f'/static/{output["filename"]}')
     assert response.status_code == 200
 
+
 def test_create_thumbnail_exceptions():
     sourceurl = "some url"
-    response = client.post('/thumbnail', json={"url": sourceurl})
+    response = client.post("/thumbnail", json={"url": sourceurl})
     assert response.status_code == 400
 
     sourceurl = "https://www.google.com"
-    response = client.post('/thumbnail', json={"url": sourceurl})
+    response = client.post("/thumbnail", json={"url": sourceurl})
     assert response.status_code == 400
