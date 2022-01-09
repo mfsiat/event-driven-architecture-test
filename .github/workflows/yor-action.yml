@@ -1,5 +1,8 @@
 name: Yor Action Testing
-on: [push, workflow_dispatchs]
+on:
+  push:
+    branches:
+      - master
 
 
 jobs:
